@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "users/css/style.css" %}">
+</head>
+<body>
+    <h1>HELLO USERS !</h1>
+    <img src="{% static "users/images/pict.png" %}" />
+    {% if users %}
+        <ol>
+        
+            {% for user in users %}
+                <li> User info
+                    <ul>
+                        {% if user.first_name %}
+                            <li>First Name: {{user.first_name}}</li>
+                        {% endif %}
+                        {% if user.last_name %}
+                            <li>Last Name: {{user.last_name}}</li>
+                        {% endif %}
+                        {% if user.email %}
+                            <li>Email: {{user.email}}</li>
+                        {% endif %}
+                    </ul>
+                </li>
+            {% endfor %}
+        
+        </ol>
+    {% else %}
+        <p>No Users Present !</p>
+    {% endif %}
+</body>
+</html>
